@@ -8,6 +8,7 @@ class ProfileUsecase {
   ProfileUsecase(this.repo);
 
   Future<ApiResponse<ProfileModel>> callGetProfileDetails() async {
+    
     return await repo.getProfileDetails();
   }
 }

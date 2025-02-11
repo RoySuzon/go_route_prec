@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_route_prec/core/routes.dart';
 import 'package:go_route_prec/features/profile/data/repo/profile_repo_imp.dart';
+import 'package:go_route_prec/features/profile/data/repo/profile_repo_imp_mock.dart';
 import 'package:go_route_prec/features/profile/domain/usercases/profile_usecase.dart';
 import 'package:go_route_prec/screen/profile_page.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,7 @@ class SettingsPage extends StatelessWidget {
         title: Text('Settings'),
       ),
       body: FutureBuilder(
-          future: ProfileUsecase(ProfileRepoImp()).callGetProfileDetails(),
+          future: ProfileUsecase(ProfileRepoImpMock()).callGetProfileDetails(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator.adaptive());
@@ -25,11 +26,6 @@ class SettingsPage extends StatelessWidget {
               return Center(child: Text(user?.name ?? ""));
             }
           }),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     context.push(Routes.nastedProfile, extra: user);
-      //   },
-      // ),
     );
   }
 }

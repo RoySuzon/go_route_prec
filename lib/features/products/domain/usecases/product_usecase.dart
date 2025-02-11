@@ -9,11 +9,6 @@ class ProductUsecase {
   ProductUsecase(this.repo);
 
   Future<ApiResponse<List<ProductModel>>> callGetProduct() async {
-    // await Future.delayed(Duration(seconds: 2));
-    // return ApiResponse(statusCode: 100, message: "adad", data: [
-    //   ProductModel(productId: 111, productName: 'productName', price: 111)
-    // ]);
-
     return await repo.getProducts();
   }
 }
